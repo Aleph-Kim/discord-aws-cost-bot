@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  # 서비스 시(스케줄러 실행)
+  prod:
+    build: 
+      context: .
+      dockerfile: Dockerfile.prod
+    volumes:
+      - .:/app
+      - /etc/localtime:/etc/localtime:ro
+    container_name: aws_cost_scheduler
+    restart: always
+    env_file:
+      - .env
+  # 개발 시(즉시 실행)
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - .:/app
+      - /etc/localtime:/etc/localtime:ro
+    container_name: aws_cost_scheduler_dev
+    env_file:
+      - .env
