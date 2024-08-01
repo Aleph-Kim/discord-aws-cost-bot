@@ -1,6 +1,11 @@
 # 📊 Discord AWS Cost Bot 💸
 Discord AWS Cost Bot은 매일 00시에 디스코드 채널에 이번 달 AWS 서버 비용을 발송하는 봇입니다! 아래는 사용법과 디렉토리 구조를 설명입니다.
 
+### 🤖 적용 완료 이미지
+<img width="453" alt="스크린샷 2024-08-01 오후 5 40 19" src="https://github.com/user-attachments/assets/c0b4f55f-ec82-4b3e-ac10-8b8c695ed48d">
+
+- 봇 프로필 이미지와 이름은 직접 설정해야합니다.
+
 사용법에 대한 설명은 블로그에서도 확인할 수 있습니다! [Aleph Kim의 IT 블로그](https://dev-kimchi.tistory.com/entry/Discord-AWS-%EC%9A%94%EA%B8%88-%EC%95%8C%EB%A6%BC-%EB%B4%87)
 
 ---
