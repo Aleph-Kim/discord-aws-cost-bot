@@ -10,18 +10,6 @@ Discord AWS Cost Bot은 매일 00시에 디스코드 채널에 이번 달 AWS �
 
 ---
 
-## 📚 라이브러리 설명
-
-1. `boto3`: AWS SDK for Python으로, AWS 서비스와의 상호작용을 쉽게 할 수 있게 해줍니다. S3, EC2, DynamoDB 등 다양한 AWS 서비스의 API를 간편하게 호출할 수 있습니다.
-
-2. `requests`: 간단하고 직관적인 HTTP 요청을 보낼 수 있게 해주는 Python 라이브러리입니다. REST API 호출 시 유용하게 사용할 수 있습니다.
-
-3. `CurrencyConverter`: 실시간 환율 정보를 제공하여 다양한 통화를 간편하게 변환할 수 있도록 도와주는 Python 라이브러리입니다. AWS 비용을 다양한 통화로 변환할 때 유용합니다.
-
-4. `APScheduler`: 작업 스케줄링을 쉽게 할 수 있게 해주는 Python 라이브러리입니다. 크론 표현식을 사용하여 주기적으로 작업을 실행할 수 있으며, 시간 기반 작업을 간편하게 설정할 수 있습니다.
-
----
-
 ## 🗂 디렉토리 구조
 ```
 discord-aws-cost-bot/
@@ -48,6 +36,20 @@ discord-aws-cost-bot/
 - `requirements.txt`: 프로젝트에서 필요한 python 라이브러리를 명시한 파일입니다.
 
 - `scheduler.py`: APScheduler 라이브러리를 이용해 매일 00시에 main.py의 작업을 실행하도록 스케줄링하는 파일입니다.
+
+---
+
+## 📚 사용한 라이브러리 설명
+
+1. `boto3`: AWS SDK for Python으로, AWS 서비스와의 상호작용을 쉽게 할 수 있게 해줍니다. S3, EC2, DynamoDB 등 다양한 AWS 서비스의 API를 간편하게 호출할 수 있습니다.
+
+2. `requests`: 간단하고 직관적인 HTTP 요청을 보낼 수 있게 해주는 Python 라이브러리입니다. REST API 호출 시 유용하게 사용할 수 있습니다.
+
+3. `CurrencyConverter`: 실시간 환율 정보를 제공하여 다양한 통화를 간편하게 변환할 수 있도록 도와주는 Python 라이브러리입니다. AWS 비용을 다양한 통화로 변환할 때 유용합니다.
+
+4. `APScheduler`: 작업 스케줄링을 쉽게 할 수 있게 해주는 Python 라이브러리입니다. 크론 표현식을 사용하여 주기적으로 작업을 실행할 수 있으며, 시간 기반 작업을 간편하게 설정할 수 있습니다.
+
+5. `Calendar`: 날짜와 관련된 다양한 기능을 제공하는 Python 라이브러리입니다. 특정 월의 마지막 날을 반환하는 함수를 사용했습니다.
 
 ---
 
