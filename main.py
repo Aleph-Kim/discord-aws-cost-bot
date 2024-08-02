@@ -2,9 +2,12 @@ import os
 import boto3
 import datetime
 import requests
+import calendar
 from currency_converter import CurrencyConverter
 
 # 환율 정보를 가져오는 함수
+
+
 def get_exchange_rate():
     url = 'https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist.zip'
     # ECB에서 제공하는 환율 데이터를 사용하여 CurrencyConverter 객체 생성
@@ -13,20 +16,22 @@ def get_exchange_rate():
     return c_list.convert(1, 'USD', 'KRW')
 
 # AWS 비용을 가져오는 함수
+
+
 def get_aws_cost():
     # AWS Cost Explorer 클라이언트 생성
     client = boto3.client(
         'ce',
-        region_name='us-east-1',
         aws_access_key_id=os.getenv('AWS_ACCESS_KEY_ID'),
         aws_secret_access_key=os.getenv('AWS_SECRET_ACCESS_KEY')
     )
 
     # 현재 시간 가져오기
     now = datetime.datetime.utcnow()
-    # 이번 달의 시작 날짜와 종료 날짜 설정
+    # 이번 달의 시작 날짜와 마지막 날짜 설정
     start = now.replace(day=1).strftime('%Y-%m-%d')
-    end = now.strftime('%Y-%m-%d')
+    last_day_of_month = calendar.monthrange(now.year, now.month)[1]
+    end = now.replace(day=last_day_of_month).strftime('%Y-%m-%d')
 
     # 비용과 사용량 데이터를 요청
     response = client.get_cost_and_usage(
@@ -62,7 +67,8 @@ def send_to_discord(cost_usd, cost_krw):
     # 디스코드 웹훅 URL로 POST 요청 보내기
     response = requests.post(webhook_url, json=data)
     if response.status_code != 204:
-        raise Exception(f"Request to discord returned an error {response.status_code}, the response is:\n{response.text}")
+        raise Exception(
+            f"Request to discord returned an error {response.status_code}, the response is:\n{response.text}")
 
 # 메인 함수
 def main():
@@ -74,6 +80,7 @@ def main():
     cost_krw = cost_usd * exchange_rate
     # 디스코드로 메시지 전송
     send_to_discord(cost_usd, cost_krw)
+
 
 if __name__ == '__main__':
     main()
